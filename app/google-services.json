@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "303439054096",
+    "firebase_url": "https://kiwari-87f29.firebaseio.com",
+    "project_id": "kiwari-87f29",
+    "storage_bucket": "kiwari-87f29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303439054096:android:61fed7f5a9cb43175ed195",
+        "android_client_info": {
+          "package_name": "com.tasya.kiwari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303439054096-hb6udur7rlc4vb28gpfhrl8252tupul4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMdfmKy0jpeipdcvjQ970oFM18NpzTfVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303439054096-hb6udur7rlc4vb28gpfhrl8252tupul4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
