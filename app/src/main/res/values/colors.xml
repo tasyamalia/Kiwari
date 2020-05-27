@@ -10,4 +10,5 @@
     <color name="bgPrimary">#EDF1F8</color>
     <color name="bg_layout_white">#FFFF</color>
     <color name="greenPrimary">#1abc9c</color>
+    <color name="yellowPrimary">#92FFEB3B</color>
 </resources>

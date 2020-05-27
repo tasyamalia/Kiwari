@@ -26,13 +26,30 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:textSize="18sp"
-            android:text="TSsS"
             android:id="@+id/name"
             android:textColor="#FFF"
             android:textStyle="bold"/>
 
     </androidx.appcompat.widget.Toolbar>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabSelectedTextColor="#FFF"
+        app:tabIndicatorColor="#FFF"
+        app:tabTextColor="#FFF"/>
 </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+    </androidx.viewpager.widget.ViewPager>
 
 
 </LinearLayout>
