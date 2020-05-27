@@ -2,10 +2,12 @@ package com.tasya.kiwari.adapter;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.tasya.kiwari.R;
 import com.tasya.kiwari.model.Chats;
 
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
@@ -50,8 +55,24 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Chats chat = mChat.get(position);
+        if (position == 0) {
+            holder.date.setVisibility(View.VISIBLE);
+            holder.date.setText(chat.getDate());
+        } else {
+            String prev_date_time = mChat.get(position - 1).getDate();
+            Log.d("INII :", prev_date_time);
+            //String prev_date[] = prev_date_time[0].split("-");
+            if (chat.getDate().equals(prev_date_time)) {
+                holder.date.setVisibility(View.GONE);
+            } else {
+                holder.date.setVisibility(View.VISIBLE);
+                holder.date.setText(chat.getDate());
+            }
+        }
+
         holder.show_message.setText(chat.getMessage());
-        Log.d(chat.getMessage().toString(), "TEST: ");
+        holder.time.setText(chat.getTime());
+
         if(imageurl.equals("default")){
             holder.avatar.setImageResource(R.drawable.ic_face);
         }else{
@@ -67,11 +88,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView show_message;
+        public TextView time;
+        public TextView date;
         public ImageView avatar;
         public ViewHolder(View itemView){
             super(itemView);
             show_message= itemView.findViewById(R.id.show_message);
             avatar= itemView.findViewById(R.id.avatar);
+            time= itemView.findViewById(R.id.time);
+            date = itemView.findViewById(R.id.date);
         }
     }
 

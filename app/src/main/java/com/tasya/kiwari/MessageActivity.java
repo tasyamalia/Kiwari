@@ -27,9 +27,12 @@ import com.tasya.kiwari.adapter.MessageAdapter;
 import com.tasya.kiwari.model.Chats;
 import com.tasya.kiwari.model.Users;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -84,8 +87,10 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String msg = text_send.getText().toString();
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
                 if(!msg.equals("")){
-                    sendMessage(firebaseUser.getUid(),userid,msg);
+                    sendMessage(firebaseUser.getUid(),userid,msg,date,time);
                 }else{
                     Toast.makeText(MessageActivity.this,"You can't send empty message", Toast.LENGTH_LONG).show();
                 }
@@ -117,12 +122,14 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-    private void sendMessage(String sender, String receiver, String message){
+    private void sendMessage(String sender, String receiver, String message, String date, String time){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
         hashMap.put("message", message);
+        hashMap.put("date",date);
+        hashMap.put("time",time);
 
         reference.child("Chats").push().setValue(hashMap);
     }
