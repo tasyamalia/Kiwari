@@ -15,9 +15,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/background_right"
+            android:background="@drawable/bg_date"
             android:gravity="center"
-            android:padding="4dp"
+            android:layout_margin="10dp"
+            android:padding="8dp"
             android:textSize="11sp"
             android:textColor="#fff"
             android:text="27 Mei 2020" />
@@ -65,9 +66,9 @@
                     android:layout_alignBottom="@id/show_message"
                     android:layout_toLeftOf="@id/show_message"
                     android:text="13:58"
+                    android:textColor="@color/gray_bg"
                     android:paddingRight="8dp"
                     android:paddingBottom="8dp"
-                    android:textColor="#9C27B0"
                     android:textSize="9sp"
                     />
         </LinearLayout>

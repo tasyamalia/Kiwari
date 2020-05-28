@@ -12,10 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 import com.tasya.kiwari.MainActivity;
 import com.tasya.kiwari.MessageActivity;
 import com.tasya.kiwari.R;
+import com.tasya.kiwari.model.Chats;
 import com.tasya.kiwari.model.Users;
 
 import org.w3c.dom.Text;
@@ -73,5 +81,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
              avatar= itemView.findViewById(R.id.avatar);
          }
     }
+
+
 
 }
