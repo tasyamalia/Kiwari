@@ -54,34 +54,46 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-        Log.d(reference.toString(), "IDIIII: ");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
-                name.setText(user.getName());
-                if(user.getAvatar().equals("default")){
-                    avatar.setImageResource(R.drawable.icon_nopic);
-                }else{
-                    Glide.with(getApplicationContext())
-                            .load(user.getAvatar())
-                            .into(avatar);
+        if(firebaseUser != null){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Users user = dataSnapshot.getValue(Users.class);
+                    name.setText(user.getName());
+                    if(user.getAvatar().equals("default")){
+                        avatar.setImageResource(R.drawable.icon_nopic);
+                    }else{
+                        Glide.with(getApplicationContext())
+                                .load(user.getAvatar())
+                                .into(avatar);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
-        viewPagerAdapter.addFragment(new UsersFragment(),"Contacts");
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+                }
+            });
+            TabLayout tabLayout = findViewById(R.id.tab_layout);
+            ViewPager viewPager = findViewById(R.id.view_pager);
+            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+            viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
+            viewPagerAdapter.addFragment(new UsersFragment(),"Contacts");
+            viewPager.setAdapter(viewPagerAdapter);
+            tabLayout.setupWithViewPager(viewPager);
+
+
+        }else{
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
+        }
+
+
     }
 
     @Override
@@ -96,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
                 return true;
         }
         return false;
