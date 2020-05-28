@@ -1,25 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_marginLeft="24dp"
     android:layout_marginRight="24dp"
     android:layout_marginTop="5dp">
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
-        android:src="@drawable/ic_face"
+        android:src="@drawable/icon_nopic"
         android:layout_gravity="center"
         android:layout_width="50dp"
         android:layout_height="50dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_on"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            app:civ_border_width="10dp"
+            android:visibility="gone"
+            app:civ_border_color="#05df29"
+            android:src="@mipmap/ic_launcher"
+            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_off"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:visibility="gone"
+            app:civ_border_width="10dp"
+            app:civ_border_color="#bfbfbf"
+            android:src="@mipmap/ic_launcher"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/name"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:text="Tasyaaa"
+        android:textColor="@color/blackPrimary"
+        android:layout_weight="1"
+        android:maxLines="1"
         android:textSize="18sp" />
+    <TextView
+        android:id="@+id/last_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textSize="14sp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    <TextView
+        android:id="@+id/lastTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="14sp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true" />
+    </RelativeLayout>
 
 </LinearLayout>

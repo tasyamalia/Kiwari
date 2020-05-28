@@ -5,6 +5,7 @@ public class Users {
     private String email;
     private String name;
     private String avatar;
+    private String status;
 
     public Users() {
     }
@@ -39,5 +40,13 @@ public class Users {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

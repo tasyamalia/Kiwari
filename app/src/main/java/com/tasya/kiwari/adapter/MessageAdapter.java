@@ -74,7 +74,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         holder.time.setText(chat.getTime());
 
         if(imageurl.equals("default")){
-            holder.avatar.setImageResource(R.drawable.ic_face);
+            holder.avatar.setImageResource(R.drawable.icon_nopic);
         }else{
             Glide.with(mContext)
                     .load(imageurl)
